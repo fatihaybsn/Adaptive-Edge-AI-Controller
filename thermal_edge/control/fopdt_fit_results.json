@@ -1,0 +1,62 @@
+{
+  "fopdt_identification_results": [
+    {
+      "experiment": "fps_percentage_step",
+      "input_variable": "percentage",
+      "step": {
+        "from": 1.0,
+        "to": 0.25,
+        "delta_u": -0.75
+      },
+      "model": {
+        "type": "FOPDT",
+        "equation": "T(t) = T0 + K * delta_u * (1 - exp(-(t - theta) / tau))"
+      },
+      "parameters": {
+        "K": 3.96,
+        "tau_seconds": 119.1,
+        "theta_seconds": 0.0
+      },
+      "fit_metrics": {
+        "rmse_celsius": 0.154,
+        "r2": 0.936
+      },
+      "units": {
+        "K": "celsius_per_normalized_input",
+        "tau": "seconds",
+        "theta": "seconds",
+        "rmse": "celsius"
+      }
+    },
+    {
+      "experiment": "image_size_step",
+      "input_variable": "resolution_normalized_area",
+      "step": {
+        "from_resolution": 640,
+        "to_resolution": 320,
+        "from_normalized_input": 1.0,
+        "to_normalized_input": 0.25,
+        "delta_u": -0.75
+      },
+      "model": {
+        "type": "FOPDT",
+        "equation": "T(t) = T0 + K * delta_u * (1 - exp(-(t - theta) / tau))"
+      },
+      "parameters": {
+        "K": 2.5,
+        "tau_seconds": 82.3,
+        "theta_seconds": 5.2
+      },
+      "fit_metrics": {
+        "rmse_celsius": 0.076,
+        "r2": 0.963
+      },
+      "units": {
+        "K": "celsius_per_normalized_input",
+        "tau": "seconds",
+        "theta": "seconds",
+        "rmse": "celsius"
+      }
+    }
+  ]
+}
