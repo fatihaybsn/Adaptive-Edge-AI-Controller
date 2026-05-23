@@ -1,3 +1,0 @@
-timestamp,gpu_temp,gpu_load,cpu_load,fps,imgsz,percentage,temp_delta,mode
-2026-05-22T19:05:28.469,0.0,0.0,0.0,0.0,640,1.0,0.0,safe
-2026-05-22T19:05:40.452,0.0,0.0,0.0,0.0,640,1.0,0.0,safe
