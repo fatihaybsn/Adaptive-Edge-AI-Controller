@@ -10,7 +10,9 @@
 
 **Thermal-aware dynamic scaling for YOLO inference on NVIDIA Jetson-class edge AI devices.**
 
-Running YOLO on a Jetson device? After a few minutes your GPU hits 70 °C, after an hour it crosses 80 °C, and eventually the system throttles, freezes, or shuts down entirely. **This project solves that.**
+Running YOLO and real-time vision workloads on Jetson-class edge devices is not only a peak-performance problem; it is a long-duration reliability problem. In security cameras, robotic platforms, drones, and unattended field systems expected to operate continuously for 24, 48, or more hours, sustained inference load can gradually increase thermal stress and reduce system stability. In such deployments, the main challenge is not whether the device can run the model for a short demo, but whether it can remain stable, responsive, and thermally safe throughout long-term operation.
+
+Although a cooling fan is useful, it is not always sufficient on its own. A fixed-speed or manually controlled fan cannot always react effectively to changing workload intensity, ambient temperature, enclosure conditions, airflow limitations, or sudden thermal spikes. Therefore, long-running edge AI systems need an adaptive thermal control mechanism that continuously monitors temperature and adjusts cooling behavior according to real-time conditions. Adaptive Edge AI Controller addresses this challenge by dynamically managing fan operation, reducing unnecessary heat accumulation, minimizing the risk of throttling, freezes, shutdowns, and human intervention, and helping Jetson-based AI systems operate more reliably and sustainably in field conditions.
 
 Adaptive Edge-Inference Controller adds an application-level control layer that monitors GPU temperature in real time, predicts near-future thermal pressure using an FOPDT-based model, and dynamically adjusts YOLO inference workload — **before** sustained heat causes throttling, unstable latency, frame drops, freezes, or shutdowns. The result: a 130-minute continuous run without a single emergency shutdown, while the system autonomously adapts resolution and frame processing ratio across safe, warning, and critical thermal regions.
 
@@ -89,7 +91,7 @@ What happens when you run YOLO on a Jetson device for an extended period — wit
 | **Thermal behavior** | Temperature rises unchecked until kernel throttling or shutdown | Temperature is proactively managed; stays below emergency threshold |
 | **FPS stability** | Starts stable, then becomes erratic as DVFS throttling kicks in | Controlled trade-off: FPS is deliberately adjusted to maintain thermal stability |
 | **System uptime** | Risk of freeze or shutdown after 15–60+ minutes | Continuous operation for 130+ minutes demonstrated without emergency events |
-| **Quality degradation** | Unpredictable — the OS decides what degrades and when | Controlled — the application decides how much to reduce resolution and frame ratio |
+| **Quality degradation** | Unpredictable — the OS decides what degrades and when | Controlled — The application decides how much to reduce or increase the resolution and frame rate |
 | **Recovery** | Manual restart required after freeze/shutdown | Automatic — workload is restored when temperature returns to safe region |
 | **Operator intervention** | Required — someone must notice and restart the system | Not required — the system self-regulates autonomously |
 
